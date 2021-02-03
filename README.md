@@ -41,3 +41,8 @@ python manage.py makemigrations
 ```
 python manage.py migrate
 ```
+
+## Run scripts
+```
+python manage.py runscript cats_load
+```
