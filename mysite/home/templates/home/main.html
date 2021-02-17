@@ -1,33 +1,7 @@
-
 {% extends "base_bootstrap.html" %}
-
 {% block content %}
-<h1>Welcome to the DJ4E Samples</h1>
-<p>
-<ul>
-    <li>
-        <p><a href="/polls">A Polls Application</a></p>
-    </li>
-    <li>
-        <p><a href="/hello">Test the session</a></p>
-    </li>
-    <li>
-        <p><a href="/cats">Gatitos</a></p>
-    </li>
-    <li><a href="autos" target="_blank">autos</a> - Autos CRUD </li>
-</ul>
-<p>
-    {% if user.is_authenticated %}
-<p>
-    Authenticated as
-<pre>
-Name: {{ user }}
-Email: {{ user.email }}
-</pre>
-</p>
-<p>You can <a href="/accounts/logout">Logout</a></p>
-{% else %}
-<p>You can <a href="/accounts/login">Login</a> if you like.</p>
-{% endif %}
-
-{% endblock %}
+    <h1>Welcome to {{ settings.APP_NAME }}</h1>
+    <p>
+    Hello world.
+    </p>
+{% endblock content %}

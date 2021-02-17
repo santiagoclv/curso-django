@@ -1,20 +1,20 @@
 from django.shortcuts import render
 from django.views import View
 from django.conf import settings
-from django.http import HttpResponse
 
 # Create your views here.
+
+# This is a little complex because we need to detect when we are
+# running in various configurations
 
 
 class HomeView(View):
     def get(self, request):
-        return render(request, 'home/main.html')
-
-
-def hello(request):
-    count = request.session.get("count", 0)
-    count = count + 1
-    request.session["count"] = count
-    response = HttpResponse("view count=" + str(count))
-    response.set_cookie('dj4e_cookie', '8d4112ce', max_age=1000)
-    return response
+        print(request.get_host())
+        host = request.get_host()
+        islocal = host.find('localhost') >= 0 or host.find('127.0.0.1') >= 0
+        context = {
+            'installed': settings.INSTALLED_APPS,
+            'islocal': islocal
+        }
+        return render(request, 'home/main.html', context)
